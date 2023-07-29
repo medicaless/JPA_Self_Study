@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--for문처럼 작동-->
+  <h1>상품 리스트 출력 예제</h1>
+  <table border="1">
+<!--    th:each를 사용하면 자바의 for문처럼 반복문을 사용할 수 있다.-->
+<!--    1. itemDtoList에 있는 데이터를 하나씩 꺼내와 itemDto에 담음-->
+<!--    2. status는 반복에 대한 상태 데이터가 존재 (status 변수명을 다른것으로 작성해도 좋음)-->
+<!--    3. 순회하고 있는 데이터의 인덱스를 출력-->
+    <thead>
+    <tr>
+      <td>순번</td>
+      <td>상품명</td>
+      <td>상품설명</td>
+      <td>가격</td>
+      <td>가격등록일</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="itemDto, status: ${itemDtoList}">
+      <td th:text="${status.index}"></td>
+      <td th:text="${itemDto.itemNm}"></td>
+      <td th:text="${itemDto.itemDetail}"></td>
+      <td th:text="${itemDto.price}"></td>
+      <td th:text="${itemDto.regTime}"></td>
+    </tr>
+    </tbody>
+  </table>
+</body>
+</html>
